@@ -5,6 +5,7 @@ public class Human {
     String lastName;
 
     Animal pet;
+    Car car;
     
 
     Human(Integer yearOfBirth) {
