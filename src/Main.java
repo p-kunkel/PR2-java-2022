@@ -1,5 +1,5 @@
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         Human Adam = new Human(1998);
         Adam.firstName = "Adam";
         Adam.lastName = "Kowalski";
@@ -13,17 +13,14 @@ public class Main {
         Adam.pet = new Animal("canis");
         Adam.pet.name = "George";
 
-        Adam.pet.feed();
-        Adam.pet.takeForAWalk();
-        Adam.pet.takeForAWalk();
-        Adam.pet.takeForAWalk();
-        Adam.pet.takeForAWalk();
-        Adam.pet.feed();
-        Adam.pet.takeForAWalk();
-        Adam.pet.takeForAWalk();
-        Adam.pet.takeForAWalk();
-        Adam.pet.takeForAWalk();
-        Adam.pet.takeForAWalk();
-        Adam.pet.feed();
+        Double salary = Adam.getSalary();
+        System.out.printf("salary: %s\n",salary);
+        Adam.setSalary(1000.0); 
+        Adam.getSalary();
+        Adam.setSalary(-1000.0); 
+        Adam.getSalary();
+        Adam.setSalary(2000.0); 
+        salary = Adam.getSalary();
+        System.out.printf("salary: %s\n",salary);
     }
 }
