@@ -2,7 +2,8 @@ public class Car {
     final String producer;
     final String model;
     final Integer yearOfProduction;
-    
+
+    Double price;
     Integer engineDisplacement;
     String typeOfFuel;
     String power;
