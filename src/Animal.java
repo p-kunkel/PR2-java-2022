@@ -46,4 +46,12 @@ public class Animal {
             System.out.printf("You're trying to take a dead animal for a walk!\n", this.name);
         }
     }
+
+    public String toString() {
+        return String.format("""
+                Name: %s
+                Species: %s
+                Weight: %s
+                """, this.name, this.species, this.weight);
+    }
 }

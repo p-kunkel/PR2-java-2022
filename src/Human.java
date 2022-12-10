@@ -3,6 +3,9 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+
+import devices.Car;
+import devices.Phone;
 public class Human {
     final int yearOfBirth;
 
@@ -14,6 +17,7 @@ public class Human {
     String lastName;
 
     Animal pet;
+    Phone phone;
     
     
 
@@ -72,5 +76,14 @@ public class Human {
             System.out.println("You can't afford a car.");
         }
         System.out.println();
+    }
+
+    public String toString() {
+        return String.format("""
+                First Name: %s
+                Last Name: %s
+                Year of birth: %s
+                Salary: %.2f
+                """, this.firstName, this.lastName, this.yearOfBirth, this.salary, this.pet, this.car);
     }
 }
