@@ -24,4 +24,16 @@ public class Car extends Device{
                 is on: %s
                 """, this.producer, this.model, this.yearOfProduction, this.price, this.engineDisplacement, this.typeOfFuel, this.power, this.color, this.isOn);
     }
+
+    @Override
+    public void turnOn() {
+        System.out.println("turning on the car engine");
+        this.isOn = true;
+    }
+
+    @Override
+    public void turnOff() {
+        System.out.println("turning off the car engine");
+        this.isOn = false;
+    }
 }

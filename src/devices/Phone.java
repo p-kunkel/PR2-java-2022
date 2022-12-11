@@ -18,4 +18,17 @@ public class Phone extends Device{
                 is on: %s
                 """, this.producer, this.model, this.screenSize, this.operatingSystem, this.yearOfProduction, this.isOn);
     }
+
+    @Override
+    public void turnOn() {
+        System.out.println("turning on the phone");
+        this.isOn = true;
+        
+    }
+
+    @Override
+    public void turnOff() {
+        System.out.println("turning off the phone");
+        this.isOn = false;
+    }
 }

@@ -24,19 +24,11 @@ public class Main {
 
         Adam.setCar(car);
 
-        System.out.println(Adam.phone.toString());
-        System.out.println(Adam.getCar().toString());
-
         Adam.phone.turnOn();
         Adam.getCar().turnOn();
 
         System.out.println(Adam.phone.toString());
         System.out.println(Adam.getCar().toString());
 
-        Adam.phone.turnOff();
-        Adam.getCar().turnOff();
-
-        System.out.println(Adam.phone.toString());
-        System.out.println(Adam.getCar().toString());
     }
 }

@@ -1,6 +1,6 @@
 package devices;
 
-public class Device {
+public abstract class Device {
     final String producer;
     final String model;
     final Integer yearOfProduction;
@@ -13,13 +13,9 @@ public class Device {
         this.isOn = false;
     }
 
-    public void turnOn() {
-        this.isOn = true;
-    }
+    public abstract void turnOn();
 
-    public void turnOff() {
-        this.isOn = false;
-    }
+    public abstract void turnOff();
 
     public String toString() {
         return String.format("""
