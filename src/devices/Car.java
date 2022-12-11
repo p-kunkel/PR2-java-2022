@@ -1,9 +1,5 @@
 package devices;
-public class Car {
-    final String producer;
-    final String model;
-    final Integer yearOfProduction;
-
+public class Car extends Device{
     public Double price;
     public Integer engineDisplacement;
     public String typeOfFuel;
@@ -12,9 +8,7 @@ public class Car {
 
 
     public Car(String producer, String model, Integer yearOfProduction) {
-        this.producer = producer;
-        this.model = model;
-        this.yearOfProduction = yearOfProduction;
+        super(producer, model, yearOfProduction);
     }
 
     public String toString() {
@@ -27,6 +21,7 @@ public class Car {
                 Type of fuel: %s
                 Power: %s
                 Color: %s
-                """, this.producer, this.model, this.yearOfProduction, this.price, this.engineDisplacement, this.typeOfFuel, this.power, this.color);
+                is on: %s
+                """, this.producer, this.model, this.yearOfProduction, this.price, this.engineDisplacement, this.typeOfFuel, this.power, this.color, this.isOn);
     }
 }

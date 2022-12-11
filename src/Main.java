@@ -10,10 +10,10 @@ public class Main {
         Adam.pet = new Animal("canis");
         Adam.pet.name = "George";
 
-        Adam.phone = new Phone("Samsung", "Galaxy S20");
+        Adam.phone = new Phone("Samsung", "Galaxy S20", 2020, 7.0);
         Adam.phone.operatingSystem = "Android 10";
 
-        Adam.setSalary(1000.0); 
+        Adam.setSalary(10000.0); 
 
         Car car = new Car("Audi","A6", 2015);
         car.color = "silver";
@@ -24,15 +24,19 @@ public class Main {
 
         Adam.setCar(car);
 
-        Adam.setSalary(10000.0); 
-        Adam.setCar(car);
+        System.out.println(Adam.phone.toString());
+        System.out.println(Adam.getCar().toString());
 
-        Adam.setSalary(50000.0); 
-        Adam.setCar(car);
+        Adam.phone.turnOn();
+        Adam.getCar().turnOn();
 
-        System.out.println(Adam);
-        System.out.println(Adam.pet);
-        System.out.println(Adam.phone);
-        System.out.println(car);
+        System.out.println(Adam.phone.toString());
+        System.out.println(Adam.getCar().toString());
+
+        Adam.phone.turnOff();
+        Adam.getCar().turnOff();
+
+        System.out.println(Adam.phone.toString());
+        System.out.println(Adam.getCar().toString());
     }
 }

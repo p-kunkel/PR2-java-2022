@@ -6,7 +6,7 @@ import java.util.List;
 
 import devices.Car;
 import devices.Phone;
-public class Human {
+public class Human extends Animal{
     final int yearOfBirth;
 
     private List<String> salaryViewingHistory;
@@ -22,6 +22,7 @@ public class Human {
     
 
     Human(Integer yearOfBirth) {
+        super("homo sapiens");
         this.yearOfBirth = yearOfBirth;
         this.salary = 0.0;
         this.salaryViewingHistory = new ArrayList<String>();
@@ -84,6 +85,7 @@ public class Human {
                 Last Name: %s
                 Year of birth: %s
                 Salary: %.2f
+                Weigth: %s
                 """, this.firstName, this.lastName, this.yearOfBirth, this.salary, this.pet, this.car);
     }
 }
