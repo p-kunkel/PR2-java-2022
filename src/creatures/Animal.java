@@ -1,12 +1,17 @@
-public class Animal {
+package creatures;
+
+import interfaces.sellable;
+
+public class Animal implements sellable {
     private static final Double DEFAULT_DOG_WEIGHT = 10.5;
     private static final Double DEFAULT_CAT_WEIGHT = 4.0;
     private static final Double DEFAULT_ELEPHANT_WEIGHT = 700.0;
     private static final Double DEFAULT_ANIMAL_WEIGHT = 1.0;
     private static final Double DEFAULT_HUMAN_WEIGHT = 80.0;
+    private static final String SPECIES_HOMO_SAPIENS = "homo sapiens";
 
     final String species;
-    String name;
+    public String name;
     private Double weight;
     private Boolean isAlive;
 
@@ -18,7 +23,7 @@ public class Animal {
             case "canis" : this.weight = DEFAULT_DOG_WEIGHT; break;
             case "felis" : this.weight = DEFAULT_CAT_WEIGHT; break;
             case "elephant" : this.weight = DEFAULT_ELEPHANT_WEIGHT; break;
-            case "homo sapiens" : this.weight = DEFAULT_HUMAN_WEIGHT; break;
+            case SPECIES_HOMO_SAPIENS  : this.weight = DEFAULT_HUMAN_WEIGHT; break;
             default : this.weight = DEFAULT_ANIMAL_WEIGHT;
         }
     }
@@ -47,6 +52,31 @@ public class Animal {
         } else {
             System.out.printf("You're trying to take a dead animal for a walk!\n", this.name);
         }
+    }
+
+    public void sell(Human seller, Human buyer, Double price) {
+        if (this.species == SPECIES_HOMO_SAPIENS ) {
+            System.out.println("Human trafficking is illegal!");
+            return;
+        }
+
+        if (seller.pet == null) {
+            System.out.println("Seller don't have pet to sell!");
+            return;
+        }
+
+        if (!seller.pet.isAlive) {
+            System.out.println("Seller's pet is dead!");
+            return;
+        }
+
+        if (!buyer.makeTransaction(seller, price)) {
+            return;
+        }
+
+        buyer.pet = seller.pet;
+        seller.pet = null;
+        System.out.printf("Transaction completed. %s bought the pet.\n", buyer.firstName);
     }
 
     public String toString() {

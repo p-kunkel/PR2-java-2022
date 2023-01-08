@@ -1,3 +1,4 @@
+package creatures;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -8,23 +9,26 @@ import devices.Car;
 import devices.Phone;
 public class Human extends Animal{
     final int yearOfBirth;
-
     private List<String> salaryViewingHistory;
-    private Double salary;
+
     private Car car;
-    
-    String firstName;
-    String lastName;
+    private Double salary;
+    private Double cash;
 
-    Animal pet;
-    Phone phone;
-    
+    public String firstName;
+    public String lastName;
     
 
-    Human(Integer yearOfBirth) {
+    public Animal pet;
+    public Phone phone;
+    
+    
+
+    public Human(Integer yearOfBirth) {
         super("homo sapiens");
         this.yearOfBirth = yearOfBirth;
         this.salary = 0.0;
+        this.cash = 0.0;
         this.salaryViewingHistory = new ArrayList<String>();
     }
 
@@ -63,18 +67,49 @@ public class Human extends Animal{
         return this.car;
     }
 
+    public Boolean giveCar(Human recipient) {
+        if (this.car == null) {
+            System.out.printf("%s do not have a car.\n", this.firstName);
+            return false;
+        }
+
+        recipient.car = this.car;
+        this.car = null;
+        return true;
+    }
+
+    public Double getCash() {
+        System.out.printf("%s has %s in cash.\n", this.firstName, this.cash);
+        return this.cash;
+    }
+
+    public Boolean makeTransaction(Human recipient, Double amount) {
+       if (this.cash < amount) {
+            System.out.printf("%s doesn't have enough money!\n", this.firstName);
+            return false;
+       }
+
+       this.cash -= amount;
+       recipient.cash += amount;
+        return true;
+    }
+
+    public void goToWork() {
+        System.out.printf("%s goes to work and earns %s\n", this.firstName, this.salary);
+        this.cash += this.salary;
+    }
+
     public void setCar(Car car) {
         System.out.println();
-        if (car.price <= this.salary) {
-            System.out.println("You bought a car with cash.");
+        if (car.price <= this.salary || car.price <= this.cash) {
+            System.out.println("The buyer bought the car with cash");
             this.car = car;
 
-        } else if ((car.price/12) <= this.salary) {
-            System.out.println("You bought a car in installments");
+        } else if ((car.price/12) <= this.salary && car.IsNew()) {
+            System.out.println("The buyer bought a car in installments");
             this.car = car;
-
         } else {
-            System.out.println("You can't afford a car.");
+            System.out.println("The buyer doesn't have enough money!");
         }
         System.out.println();
     }

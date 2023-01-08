@@ -1,4 +1,7 @@
 package devices;
+
+import creatures.Human;
+
 public class Phone extends Device{
     final Double screenSize;
     public String operatingSystem;
@@ -30,5 +33,23 @@ public class Phone extends Device{
     public void turnOff() {
         System.out.println("turning off the phone");
         this.isOn = false;
+    }
+
+    @Override
+    public void sell(Human seller, Human buyer, Double price) {
+        if (seller.phone == null) {
+            System.out.println("Seller don't have phone to sell!");
+            return;
+        }
+
+        if (!buyer.makeTransaction(seller, price)) {
+            return;
+        }
+
+        this.isNew = false;
+        buyer.phone = seller.phone;
+        seller.phone = null;
+
+        System.out.printf("Transaction completed. %s bought the phone.\n", buyer.firstName);
     }
 }

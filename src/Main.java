@@ -1,3 +1,5 @@
+import creatures.Animal;
+import creatures.Human;
 import devices.Car;
 import devices.Phone;
 
@@ -24,11 +26,37 @@ public class Main {
 
         Adam.setCar(car);
 
-        Adam.phone.turnOn();
-        Adam.getCar().turnOn();
+        Human Wojtek = new Human(2000);
+        Wojtek.firstName = "Wojtek";
+        Wojtek.lastName = "Nowak";
 
-        System.out.println(Adam.phone.toString());
-        System.out.println(Adam.getCar().toString());
+        
+        System.out.println(Wojtek.getCar());
+        System.out.println(Adam.getCar());
 
+        Wojtek.setSalary(1000.0);
+        Wojtek.goToWork();
+        Adam.getCar().sell(Adam, Wojtek, 1500.0);
+
+        Wojtek.goToWork();
+        Adam.getCar().sell(Adam, Wojtek, 1500.0);
+        Adam.getCash();
+        Wojtek.getCash();
+
+        System.out.println(Wojtek.getCar());
+        System.out.println(Adam.getCar());
+
+        Adam.pet.sell(Adam, Wojtek, 400.0);
+        System.out.println(Wojtek.pet);
+        System.out.println(Adam.pet);
+
+        Adam.phone.sell(Adam, Wojtek, 800.0);
+        Wojtek.goToWork();
+        Adam.phone.sell(Adam, Wojtek, 800.0);
+        System.out.println(Wojtek.phone);
+        System.out.println(Adam.phone);
+        Adam.getCash();
+
+        Adam.sell(Adam, Wojtek, 5.0);
     }
 }

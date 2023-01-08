@@ -1,5 +1,8 @@
 package devices;
-public class Car extends Device{
+
+import creatures.Human;
+
+public class Car extends Device {
     public Double price;
     public Integer engineDisplacement;
     public String typeOfFuel;
@@ -35,5 +38,19 @@ public class Car extends Device{
     public void turnOff() {
         System.out.println("turning off the car engine");
         this.isOn = false;
+    }
+
+    @Override
+    public void sell(Human seller, Human buyer, Double price) {
+        if (!buyer.makeTransaction(seller, price)) {
+            return;
+        }
+
+        this.isNew = false;
+        if (!seller.giveCar(buyer)) {
+            return;
+        }
+
+        System.out.printf("Transaction completed. %s bought the car.\n", buyer.firstName);
     }
 }
