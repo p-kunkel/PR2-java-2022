@@ -2,7 +2,7 @@ package creatures;
 
 import interfaces.sellable;
 
-public class Animal implements sellable {
+public abstract class Animal implements sellable, Feetable{
     private static final Double DEFAULT_DOG_WEIGHT = 10.5;
     private static final Double DEFAULT_CAT_WEIGHT = 4.0;
     private static final Double DEFAULT_ELEPHANT_WEIGHT = 700.0;
@@ -28,10 +28,16 @@ public class Animal implements sellable {
         }
     }
 
+    @Override
     public void feed(){
+        feed(2.0);
+    }
+
+    @Override
+    public void feed(Double foodWeight){
         if (this.isAlive) {
-            this.weight += 2.0;
-            System.out.printf("You feed %s...\n", this.name);
+            this.weight += foodWeight;
+            System.out.printf("You feed %s...\n", this.name );
         } else {
             System.out.printf("You're trying to feed a dead animal!\n", this.name);
         }
@@ -65,7 +71,7 @@ public class Animal implements sellable {
             return;
         }
 
-        if (!seller.pet.isAlive) {
+        if (!seller.pet.isAlive()) {
             System.out.println("Seller's pet is dead!");
             return;
         }
@@ -77,6 +83,10 @@ public class Animal implements sellable {
         buyer.pet = seller.pet;
         seller.pet = null;
         System.out.printf("Transaction completed. %s bought the pet.\n", buyer.firstName);
+    }
+
+    public Boolean isAlive() {
+        return this.isAlive;
     }
 
     public String toString() {

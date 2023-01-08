@@ -1,5 +1,5 @@
-import creatures.Animal;
 import creatures.Human;
+import creatures.Pet;
 import devices.Car;
 import devices.Phone;
 
@@ -9,7 +9,7 @@ public class Main {
         Adam.firstName = "Adam";
         Adam.lastName = "Kowalski";
 
-        Adam.pet = new Animal("canis");
+        Adam.pet = new Pet("canis");
         Adam.pet.name = "George";
 
         Adam.phone = new Phone("Samsung", "Galaxy S20", 2020, 7.0);
@@ -58,5 +58,8 @@ public class Main {
         Adam.getCash();
 
         Adam.sell(Adam, Wojtek, 5.0);
+
+        Wojtek.pet.takeForAWalk();
+        Wojtek.pet.feed();
     }
 }

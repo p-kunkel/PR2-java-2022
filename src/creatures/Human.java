@@ -19,7 +19,7 @@ public class Human extends Animal{
     public String lastName;
     
 
-    public Animal pet;
+    public Pet pet;
     public Phone phone;
     
     
